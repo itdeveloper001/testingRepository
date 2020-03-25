@@ -1,0 +1,76 @@
+﻿@model ThemeMVC.Models.tblProduct
+@{
+    ViewBag.Title = "SingleProduct";
+
+    Session["proid"] = Model.ProId;
+
+    Session["price"] = Model.Price;
+
+   
+}
+
+<h1>@Session["UserId"]</h1>
+
+
+<div class="products">
+    <div class="container">
+        <div class="single-page-row" id="detail-21">
+            <div class="col-md-3 single-top-left">
+                <div class="flexslider">
+
+                    <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                      <img src="~/images/@Model.Image" class="img-responsive"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 single-top-right">
+
+
+                <h3 class="item_name">@Model.Name</h3>
+                <p>dummy detail </p>
+                <div class="single-rating">
+                    <ul>
+                        <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                        
+                    </ul>
+                </div>
+                <div class="single-price">
+                    <ul>
+                        <li>Rs.@Model.Price</li>
+                        <li><del>Rs.10000</del></li>
+                       
+                    </ul>
+                </div>
+
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    @Html.ActionLink("Login", "Login", "Account", new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Register", "Register", "Account", new { @class = "btn btn-primary" })
+
+                }
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("2"))
+                    {
+                        @Html.ActionLink("CLICK HERE TO ORDER", "OrderBook", "Product", new { @class = "btn btn-primary" })
+                    }
+
+                    if (User.IsInRole("1"))
+                    {
+                        <h1>Admin Login</h1>
+                    }
+                }
+              
+              
+               
+            </div>
+           
+            <div class="clearfix"> </div>
+        </div> 
+    </div>
+</div>

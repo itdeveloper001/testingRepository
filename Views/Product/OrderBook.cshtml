@@ -1,0 +1,66 @@
+﻿@using (Html.BeginForm("OrderBook", "Product", FormMethod.Post))
+{
+
+    <div class="row">
+
+        <div class="col-lg-3" style="margin-left:300px;">
+
+
+            <form>
+                <input type="hidden" name="proid" value="@Session["proid"]" />
+                <input type="hidden" name="userid" value="@Session["UserId"]" />
+                
+                <label>Contact No: </label>
+                <input type="text" name="contact" placeholder="enter a contact no" class="form-control col-lg-3" />
+                <br />
+                <label>Email: </label>
+                <input type="text" name="email" placeholder="enter a  email" class="form-control col-lg-3" />
+
+                <br />
+                <label>Address: </label>
+                <input type="text" name="address" placeholder="enter a address " class="form-control col-lg-3" />
+
+                <br />
+                <label>Price: </label>
+                <input type="text" name="price" id="price" onkeyup="calc()" value="@Session["price"]" class="form-control col-lg-3" />
+                <br />
+
+                <label>Qty: </label>
+                <input type="number" name="qty" id="qty" onkeyup="calc(this)" placeholder="enter a qty" class="form-control col-lg-3" />
+
+                <br />
+
+                <label>Total: </label>
+                <input type="number" name="total" id="total" placeholder="enter a total" class="form-control col-lg-3" />
+
+                <br />
+
+                <label>Choose Payment Method: </label>
+                <select name="paymethod" class="form-control">
+                    <option>Select Payment Method</option>
+                    <option>Cash</option>
+                    <option>Card</option>
+                </select>
+                <br />
+
+                <input type="submit" class="btn btn-primary" value="Order Book" />
+
+               
+                <h1>@TempData["book"]</h1>
+            </form>
+            <br />
+        </div>
+    </div>
+
+}
+
+
+<script>
+
+    function calc() {
+        var qty = document.getElementById("qty").value;
+        var price = document.getElementById("price").value;
+        document.getElementById("total").value = ((parseInt(qty)) * (parseInt(price)));
+
+    }
+</script>

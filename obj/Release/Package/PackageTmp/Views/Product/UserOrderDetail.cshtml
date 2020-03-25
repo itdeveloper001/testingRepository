@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ThemeMVC.Models.tblOrder>
+@{
+    ViewBag.Title = "ViewOrder";
+}
+
+<h2>View Orders</h2>
+
+
+
+
+<table class="table">
+
+    <tr>
+        <th>ID</th>
+        <th>Product ID</th>
+        <th>User ID</th>
+        <th>Contact</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+        <th>PayMethod</th>
+        <th>Order Date</th>
+    </tr>
+   @foreach (var item in Model)
+   {
+    <tr>
+        <td>@item.OrderId</td>
+        <td>@item.ProId</td>
+        <td>@item.UserId</td>
+        <td>@item.Contact</td>
+        <td>@item.Email</td>
+        <td>@item.Address</td>
+        <td>@item.Price</td>
+        <td>@item.Qty</td>
+        <td>@item.Total</td>
+        <td>@item.PayMethod</td>
+        <td>@item.Date</td>
+    </tr>
+
+
+
+   }
+       
+</table>
